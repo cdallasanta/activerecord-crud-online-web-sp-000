@@ -70,7 +70,7 @@ def can_find_using_where_clause_and_be_sorted
 
   movies = []
   Movie.connection.execute(sql).each do |sorted_movie|
-    movies << Movie.find(sorted_movie[:id])
+    movies << Movie.find(sorted_movie["id"])
   end
   movies
 end

@@ -68,7 +68,11 @@ def can_find_using_where_clause_and_be_sorted
     ORDER BY release_date DESC
   SQL
 
-  Movie.connection.execute(sql)
+  movies = []
+  Movie.connection.execute(sql).each do |sorted_movie|
+    movies << Movie.find(sorted_movie[:id])
+  end
+  movies
 end
 
 def can_be_found_updated_and_saved
